@@ -4,7 +4,7 @@ import app from "./src/app.js";
 import connectDB from "./src/common/config/db.js";
 import { initSocketHub } from "./src/realtime/socket-hub.js";
 
-const PORT = process.env.PORT || 3000;
+const PORT = Number(process.env.PORT) || 3000;
 
 const start = async () => {
     await connectDB();
@@ -12,8 +12,9 @@ const start = async () => {
     const httpServer = http.createServer(app);
     initSocketHub(httpServer);
 
-    httpServer.listen(PORT, () => {
-        console.log("started");
+    // 0.0.0.0: required on Railway/Docker so the proxy can reach the process
+    httpServer.listen(PORT, "0.0.0.0", () => {
+        console.log(`Listening on 0.0.0.0:${PORT} (set public domain target port to ${PORT})`);
     });
 };
 
