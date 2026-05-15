@@ -4,23 +4,11 @@ import authRoutes from './modules/auth/auth.routes.js';
 import pollRoutes from './modules/poll/poll.routes.js';
 import responseRoutes from './modules/response/response.routes.js';
 import ApiError from './common/utils/api-error.js';
-import { isOriginAllowed } from './common/config/cors-origins.js';
 
 const app = express();
 
 // Middlewares
-app.use(
-    cors({
-        origin(origin, callback) {
-            if (isOriginAllowed(origin)) {
-                callback(null, true);
-            } else {
-                callback(new Error('Not allowed by CORS'));
-            }
-        },
-        credentials: true,
-    }),
-);
+app.use(cors());
 app.use(express.json());
 
 // Routes
