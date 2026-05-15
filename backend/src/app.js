@@ -8,7 +8,10 @@ import ApiError from './common/utils/api-error.js';
 const app = express();
 
 // Middlewares
-app.use(cors());
+app.use(cors({
+  origin: env.CLIENT_URL,
+  credentials: true,
+}));
 app.use(express.json());
 
 app.get('/api/health', (req, res) => {
