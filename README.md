@@ -13,6 +13,17 @@ Pix Polls is a full-stack polling application with a Node.js and Express backend
 - `backend/` contains the Express server, API routes, models, services, and real-time socket hub
 - `frontend/` contains the React app, API client, pages, components, and socket integration
 
+## Demo video
+
+
+https://github.com/user-attachments/assets/00c427ce-737b-49ef-bb94-bd92915324e2
+
+
+
+
+
+
+
 ## Run locally
 
 1. Install backend dependencies:
